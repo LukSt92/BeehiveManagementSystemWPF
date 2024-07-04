@@ -8,7 +8,7 @@ namespace BeehiveManagementSystemWPF
 {
     class EggCare : Bee
     {
-        public EggCare() : base("Egg Care") 
+        public EggCare(Queen queen) : base("Egg Care") 
         {
             this.queen = queen;
         }
