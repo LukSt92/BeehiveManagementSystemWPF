@@ -42,7 +42,7 @@ namespace BeehiveManagementSystemWPF
                     AddWorker(new HoneyManufacturer());
                     break;
                 case "Egg Care":
-                    AddWorker(new EggCare());
+                    AddWorker(new EggCare(this));
                     break;
             }
             UpdateStatusReport();
