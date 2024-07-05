@@ -16,7 +16,7 @@ namespace BeehiveManagementSystemWPF
 
         public static void CollectNectar(float amount)
         {
-            if (amount > 0f) nectar = +amount;
+            if (amount > 0f) nectar += amount;
         }
         public static void ConvertNectarToHoney(float amount)
         {
