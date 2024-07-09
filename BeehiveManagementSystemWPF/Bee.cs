@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BeehiveManagementSystemWPF
 {
-    abstract class Bee
+    abstract class Bee : IWorker
     {
         public Bee(string job)
         {

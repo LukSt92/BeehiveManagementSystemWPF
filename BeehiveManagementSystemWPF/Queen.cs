@@ -18,11 +18,11 @@ namespace BeehiveManagementSystemWPF
         public const float HONEY_PER_UNASSIGNED_WORKER = 0.5f;
         public string StatusReport { get; private set; }
         public override float CostPerShift { get { return 2.15f; } }
-        private Bee[] workers = new Bee[0];
+        private IWorker[] workers = new IWorker[0];
         private float eggs = 0;
         private float unassignedWorkers = 3;
 
-        private void AddWorker(Bee worker)
+        private void AddWorker(IWorker worker)
         {
             if (unassignedWorkers >= 1)
             {
@@ -58,7 +58,7 @@ namespace BeehiveManagementSystemWPF
         private string WorkerStatus(string job)
         {
             int count = 0;
-            foreach (Bee worker in workers)
+            foreach (IWorker worker in workers)
                 if (worker.Job == job) count++;
             string s = "s";
             if (count == 1) s = "";
