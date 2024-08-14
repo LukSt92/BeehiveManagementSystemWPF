@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace BeehiveManagementSystemWPF
 {
-    class Queen : Bee
+    class Queen : Bee, INotifyPropertyChanged
     {
         public Queen() : base("Queen")
         {
@@ -21,6 +22,12 @@ namespace BeehiveManagementSystemWPF
         private IWorker[] workers = new IWorker[0];
         private float eggs = 0;
         private float unassignedWorkers = 3;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
 
         private void AddWorker(IWorker worker)
         {
@@ -70,6 +77,7 @@ namespace BeehiveManagementSystemWPF
             $"\nEgg count: {eggs:0.0}\nUnassigned workers: {unassignedWorkers:0.0}\n" +
             $"{WorkerStatus("Nectar Collector")}\n{WorkerStatus("Honey Manufacturer")}" +
             $"\n{WorkerStatus("Egg Care")}\nTOTAL WORKERS: {workers.Length}";
+            OnPropertyChanged("StatusReport");
         }
         protected override void DoJob()
         {
